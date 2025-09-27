@@ -1,0 +1,47 @@
+:root{
+  --boardBG: linear-gradient(180deg,#0b1224,#061023);
+  --card: rgba(255,255,255,0.02);
+  --accent: linear-gradient(90deg,#00c6ff,#0072ff);
+  --slider-h: 28px;
+  --board-w: 520px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',system-ui;background:var(--boardBG);color:#eaf4ff}
+.level-container{max-width:760px;margin:2rem auto;padding:1rem}
+.level-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.game{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  height:520px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+  overflow:hidden;position:relative;box-shadow: 0 14px 28px rgba(0,0,0,0.52);
+  display:flex;flex-direction:column;align-items:flex-start;padding-top:10px;padding-left:10px;
+}
+
+/* sliders style */
+.slider{
+  height: var(--slider-h);
+  width: 160px;
+  background: linear-gradient(90deg,#ff7b7b,#ff5757);
+  margin-bottom: 6px;
+  border-radius: 8px;
+  position: relative;
+  left: 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: left 80ms linear;
+  visibility: visible;
+}
+
+/* active motion - we'll animate the topmost moving slider using JS (requestAnimationFrame) */
+
+/* Buttons */
+.level-actions{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
+.btn{padding:8px 14px;border-radius:999px;border:none;background:rgba(255,255,255,0.03);color:white;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--accent)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:18px;background:rgba(10,14,20,0.95);color:#fff;padding:10px 14px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity 160ms}
+.toast.show{opacity:1;pointer-events:auto}
+
+/* Responsive */
+@media (max-width:640px){
+  .game{padding-left:8px;padding-right:8px}
+  .slider{width:120px}
+}
