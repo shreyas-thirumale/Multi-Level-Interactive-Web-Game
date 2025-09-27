@@ -1,0 +1,81 @@
+:root{
+  --bg: linear-gradient(180deg,#0b1220,#142037);
+  --card: rgba(255,255,255,0.03);
+  --accent: linear-gradient(90deg,#00c6ff,#0072ff);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Poppins',system-ui;}
+body{background:var(--bg); color:#eaf4ff; transition:opacity 300ms;}
+.level-container{max-width:680px;margin:2rem auto;padding:1rem;}
+.level-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.level-header h1{margin:0;font-size:1.5rem;}
+.score{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:8px;font-weight:600;}
+
+/* Game card */
+.game{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  height:220px;
+  border-radius:12px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.03);
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+
+/* ground */
+#ground{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:32px;
+  background: linear-gradient(90deg,#0f1b2b,#07101a);
+  box-shadow: inset 0 6px 30px rgba(0,0,0,0.6);
+}
+
+/* character */
+#character{
+  width:48px;height:48px;background:#0f1724;border-radius:50%;
+  position:absolute; left:40px; bottom:32px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.6), 0 0 18px rgba(0,0,0,0.35) inset;
+  transition: transform 180ms ease;
+}
+.jump {
+  animation: jumpAnim 400ms cubic-bezier(.2,.9,.2,1);
+}
+@keyframes jumpAnim{
+  0%{transform: translateY(0)}
+  40%{transform: translateY(-84px)}
+  75%{transform: translateY(-84px)}
+  100%{transform: translateY(0)}
+}
+
+/* block obstacle */
+#block{
+  width:22px;height:22px;border-radius:6px;background: #ff5252; position:absolute;
+  right: -60px; bottom: 40px; box-shadow: 0 6px 20px rgba(255,82,82,0.18), 0 0 12px rgba(255,82,82,0.12) inset;
+  animation: blockMove 1s linear infinite;
+}
+@keyframes blockMove{
+  0%{right:-60px}
+  100%{right:540px}
+}
+
+/* Buttons */
+.level-actions{display:flex;gap:1rem;justify-content:center;margin-top:1rem;}
+.btn{padding:8px 14px;border-radius:999px;border:none;background:rgba(255,255,255,0.04);color:white;font-weight:600;cursor:pointer}
+.btn.primary{background:var(--accent)}
+
+/* Toast (shared) */
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:18px;background:rgba(10,14,20,0.95);color:#fff;padding:10px 14px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity 160ms}
+.toast.show{opacity:1;pointer-events:auto}
+
+/* Responsive */
+@media (max-width:480px){
+  .game{height:180px}
+  #character{left:28px;width:40px;height:40px}
+}
